@@ -1,0 +1,54 @@
+﻿<Window x:Class="CaptionButtonAndFlatButtonStyle.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CaptionButtonAndFlatButtonStyle"
+        mc:Ignorable="d" SizeToContent="Height"
+        Title="MainWindow" Height="450" Width="350">
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="FlatButtonStyleSheet.xaml"/>
+				<ResourceDictionary Source="CaptionButtonShapeSheet.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+
+	<StackPanel Orientation="Horizontal"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				Margin="10">
+		<Button Style="{StaticResource FlatButtonStyle}"
+				Background="Transparent"
+				Width="25"
+				Height="25"
+				Content="{StaticResource MinimizeButtonShape}">
+		</Button>
+
+		<ToggleButton Margin="5,0,5,0"
+					  Background="Transparent"
+					  Width="25"
+					  Height="25">
+			<ToggleButton.Style>
+				<Style BasedOn="{StaticResource FlatToggleButtonStyle}"
+					   TargetType="ToggleButton">
+					<Setter Property="Content" Value="{StaticResource MaximizeButtonShape}"/>
+					<Style.Triggers>
+						<Trigger Property="IsChecked" Value="True">
+							<Setter Property="Content" Value="{StaticResource NormalizeButtonShape}"/>
+						</Trigger>
+					</Style.Triggers>
+				</Style>
+			</ToggleButton.Style>
+		</ToggleButton>
+
+
+		<Button Style="{StaticResource FlatButtonWarningStyle}"
+				Background="Transparent"
+				Width="25"
+				Height="25"
+				Content="{StaticResource CloseButtonShape}">
+		</Button>
+	</StackPanel>
+</Window>
